@@ -1,0 +1,44 @@
+{
+    "auth": {
+        "identity": {
+            "methods": [
+                "password"
+            ],
+            "password": {
+                "user": {
+                    "id": "0ca8f6",
+                    "password": "secretsecret"
+                }
+            }
+        },
+        "scope": {
+            "project": {
+                "domain": {
+                    "id": "1789d1"
+                },
+                "name": "project-x"
+            }
+        }
+    }
+}
+
+
+{
+    "identity": {
+        "password": {
+            "user": {
+                "password": "password",
+                "id": "90fd2e5cebf6499e8b23516a0864be72"
+            }
+        },
+        "methods": ["password"]
+    },
+    "scope": {
+        "project": {
+            "domain": {
+                "id": "default"
+            },
+            "name": "Gowtham"
+        }
+    }
+}
