@@ -12,11 +12,13 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.rmi.UnexpectedException;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import org.openstack4j.api.Builders;
 import org.openstack4j.api.OSClient;
 import org.openstack4j.api.exceptions.AuthenticationException;
@@ -99,12 +101,30 @@ public class OpenstackTest {
 //            OSClient os = server.authenticate();
 //            OpenStackServer server = new OpenStackServer("http://192.168.1.181:5000/v3", "69cbea16a1fd4056a980a09ffebe4f6e", "password", null);
 //            OSClient os = server.authenticate();
-//            OpenStackServer server = new OpenStackServer("http://68.233.240.157:5000/v3", "2c546ced45614908942021d6b5030607", "834a9384676345d2", "default", "admin");
-//            OSClient os = server.authenticate();
+            OpenStackServer server = new OpenStackServer("http://68.233.240.157:5000/v3", "2c546ced45614908942021d6b5030607", "834a9384676345d2", "default", "admin");
+            OSClient os = server.authenticate();
 //            OpenStackServer server = new OpenStackServer("http://192.168.1.180:5000/v2.0", "admin", "afe0eab67af94700", null, "admin");
 //            OSClient os = server.authenticate();
-            OpenStackServer server = new OpenStackServer("http://192.168.1.181:5000/v2.0", "admin", "1483ffaf6a0a4189", null, "admin");
-            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://192.168.1.181:5000/v2.0", "admin", "1483ffaf6a0a4189", null, "admin");
+//            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.36:5000/v3", "98065efd959144d3888db264780bdcd8", "040aa478640b4eff", "default", "admin");
+//            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.36:5000/v3", "17f368871cc14dae8f3fe2e1752097c7", "ba3e4c11ff4d4d8c", "default", "services");
+//            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.36:5000/v3", "c05771df649c4b7abe86474a425a8c3a", "password", "default", "developer");
+//            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.34:5000/v3", "87748c0f34924ad88a2d63251dddef3d", "09114f43f19d4021", "default", "admin");
+//            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.41:5000/v2.0", "admin", "72aeccfd0f3b496e", null, "admin");
+//            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.57:5000/v2.0", "admin", "85dbdce81dcc48a9", null, "admin");
+//            OSClient os = server.authenticate();
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.41:5000/v2.0", "admin", "72aeccfd0f3b496e", null, "admin");
+//            OSClient os = server.authenticate(); //admin
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.41:5000/v2.0", "sanjeev", "password", null, "Testing project");
+//            OSClient os = server.authenticate(); 
+//            OpenStackServer server = new OpenStackServer("http://172.16.31.36:5000/v3", "322ddce472814246b12d2dfb7185fa3b", "password", "default", "QA");
+//            OSClient os = server.authenticate(); //admin
 //            OpenStackServer server = new OpenStackServer("http://68.233.240.157:5000/v3", "2c546ced45614908942021d6b5030607", "834a9384676345d2","default", "admin");
 //            OSClient os = server.authenticate();
 //            OpenStackServer server = new OpenStackServer("http://68.233.240.157:5000/v3", "90fd2e5cebf6499e8b23516a0864be72", "password", "default", "fog_auth");
@@ -116,7 +136,26 @@ public class OpenstackTest {
 //            OpenStackServer server =  new OpenStackServer(null, null, null, null, null);
 //            OSClient os = server.authenticate();
 //            os.networking().securitygroup().delete("36cf6213-12f0-4df5-99fa-66a0fdf8f7b4");
-//            os.networking().securitygroup().create(Builders.securityGroup().name("security_fog_Gowtham1").description("desc").build()); 
+//            os.networking().securitygroup().create(Builders.securityGroup().name("security_fog_Gowtham1").description("desc").build());
+            
+//            Tenant tenant = os.identity().tenants().create(Builders.tenant().name("uiTesting").enabled(true).build());
+//            System.out.println("tenant: "+tenant);
+//            User openstackUser = os.identity().users().create(Builders.user()
+//                    .name("tester1")
+//                    .password("passw0rd").email("test@gmail.com").enabled(true).build());
+            
+//            System.out.println("openstackUser: "+openstackUser);
+
+//            System.out.println("os: "+os.compute().servers().get("ddafa512-2d49-43e7-9f21-05a05217da3d").getStatus());
+//            System.out.println("os: "+os.compute().servers().get("ddafa512-2d49-43e7-9f21-05a05217da3d").getVmState());
+//            System.out.println("os: "+os.compute().servers().get("ddafa512-2d49-43e7-9f21-05a05217da3d").getPowerState());
+//            System.out.println("os: "+os.compute().servers().get("ddafa512-2d49-43e7-9f21-05a05217da3d").getTaskState());
+
+            
+//            os.compute().servers().
+//           ActionResponse  actionResponse =  os.identity().roles().addUserRoleByTenant(tenant.getId(), "453796bc4c28482eab268d5e26f6c034", "9fe2ff9ee4384b1894a90878d3e92bab");
+     
+//            System.out.println(""+os.identity().roles().getList());
 
 //             Image image = os.images().update(Builders.image().id("2f26bde0-8e5b-4011-af8e-402d49bfd60b").name("balaji_test").isPublic(true)
 //                .isProtected(true)
@@ -127,9 +166,35 @@ public class OpenstackTest {
 //            System.out.println("os: " + os.identity().tenants().list().iterator().next().getId());
 //            System.out.println(""+os.identity().users().listUserTenants("8bcd091da7194b2d926b4a0aed627607"));
 //             List<? extends User> users = os.identity().users().list();    
-//             
+            
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); 
+//            System.out.println("os: "+os);
+//            
+//            System.out.println("name is: "+os.identity().users().get("c1ced055c18e49d5b07a6425ace31872").getName());
+
+//            
 //             System.out.println("users: "+users);
-            System.out.println("os: " + os.compute().hypervisors().statistics());
+            
+//            VolumeSnapshot volumeSnapshot = os.blockStorage().snapshots().create(Builders.volumeSnapshot()
+//            .name("New snapshot for tesing")
+//            .description("New snapshot created for volume1")
+//            .volume("f88045e0-6759-4584-b7c0-95473184eb0f")
+//            .force(true).build());
+            
+//            System.out.println("res: "+os.blockStorage().snapshots().delete("360a67ae-07c5-4cb1-858b-afb02e29543e"));
+//            Volume volume = os.blockStorage().volumes().create(Builders.volume()
+//                    .name("volume created from api")
+//                    .description("volume created from api")
+//                    .snapshot("2a530a97-9755-47fc-9091-8d3426a41113")
+//                    .bootable(true)
+//                    .build());
+            
+//            ActionResponse actionResponse = os.blockStorage().snapshots().update("2a530a97-9755-47fc-9091-8d3426a41113",
+//                    "testSnapshot from api", "testSnapshot from api", "03632d259303412bb0f70c7c7fceac36");
+            
+//            VolumeSnapshot volumeSnapshot = os.blockStorage().snapshots().get("2a530a97-9755-47fc-9091-8d3426a41113");
+//            System.out.println("volumeSnapshot: " +volumeSnapshot);
+//            System.out.println("actionResponse: " +actionResponse.toString());
 
   
 //           User user =  os.identity().users().get("70595f1303a14a8988b0894e45d0a656");
@@ -560,8 +625,26 @@ public class OpenstackTest {
 //            System.out.println("end: " + os.identity().listEndpoints());
 //            KeystoneTokenV3 token = (KeystoneTokenV3) os.getAccess().getToken();
 //            URL objectStoreUrl = null;
+//            
+//            List res =  new ArrayList();
 //            for (Catalog catalog : token.getCatalog()) {
 //                System.out.println("type: "+catalog.getType());
+//                
+//                if(catalog.getType().equals("metering")) {
+//                    for (EndpointV3 endpoint : catalog.getEndpoints()) {
+//                        
+//                        if(endpoint.getInterface() == Facing.PUBLIC) {
+//                            HashMap hashMap = new HashMap();
+//                            hashMap.put("regionName", endpoint.getRegion());
+//                            hashMap.put("url", endpoint.getURL());
+//                            res.add(hashMap);
+//                        }
+//                        System.out.println("endpoint: "+endpoint);
+//                        
+//
+//                    }
+//                }
+                
 //                if(catalog.getType().equals("object-store")) {
 //                    for(EndpointV3 endpointV3: catalog.getEndpoints()) {
 //                        System.out.println("service: "+endpointV3.toString());
@@ -580,6 +663,25 @@ public class OpenstackTest {
 //
 //                }
 //            }
+//            Role currentRole = os.identity().roles().getName("_member_");
+            
+            
+//            ActionResponse actionResponse = os.identity().roles().addUserRoleByTenant("4660c8ff028342808487f9e4246d02f2", "6cac43c880b74ea1bdf84b6b7b6cc448", currentRole.getId());
+//            ActionResponse actionResponse1 = os.identity().roles().addUserRole("dd2a8b4f2c1e46f5a035233d33e2b883", "62fcb76b714e4a548c89b4307ef75585", currentRole.getId());
+//            System.out.println("actionResponse: "+actionResponse);
+//            List<? extends Service> services = os.getAccess().getServiceCatalog();
+//            
+//                for(Service service: services) {
+//                    if (service.getType().equals("metering")) {
+//                        
+//                        for (Endpoint endPoint : service.getEndpoints()) {
+//                            System.out.println("reg: " + endPoint.getRegion().trim());
+//                            System.out.println("reg: " + endPoint.getPublicURL().toString());
+//                        }
+//                    }
+//                    
+//                }
+
 //          
 //            System.out.println("con list: "+os.objectStorage().containers().list());
 //            List<? extends SwiftObject> swiftObjects = os.objectStorage().objects().list("test2", ObjectListOptions.create().path("folder"));
